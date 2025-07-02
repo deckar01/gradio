@@ -41,7 +41,7 @@ jobs:
   comment-chromatic-start:
     uses: "./.github/workflows/comment-queue.yml"
     needs: changes
-    if: needs.changes.outputs.should_run == 'true' || contains(needs.changes.outputs.labels, 'no-visual-update')
+    if: github.repository == 'gradio-app/gradio' && (needs.changes.outputs.should_run == 'true' || contains(needs.changes.outputs.labels, 'no-visual-update'))
     secrets:
       gh_token: ${{ secrets.COMMENT_TOKEN }}
     with:
