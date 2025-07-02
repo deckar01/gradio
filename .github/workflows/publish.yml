@@ -16,6 +16,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
+    if: github.repository == 'gradio-app/gradio'
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
