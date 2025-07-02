@@ -15,6 +15,7 @@ jobs:
   version_or_publish:
     runs-on: ubuntu-22.04
     environment: publish
+    if: github.repository == 'gradio-app/gradio'
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
