@@ -5,8 +5,7 @@ on:
     types: [opened, synchronize, reopened, edited, labeled, unlabeled]
   push:
     branches:
-      - main
-      - 5.0-dev
+      - "*"
 
 concurrency:
   group: "${{ github.event.pull_request.number }}-${{ github.ref_name }}-${{ github.workflow }}"
