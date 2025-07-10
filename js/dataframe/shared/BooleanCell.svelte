@@ -1,56 +1,26 @@
 <script lang="ts">
 	import { BaseCheckbox } from "@gradio/checkbox";
 
-	export let value: boolean | string = false;
+	export let value = false;
 	export let editable = true;
 	export let on_change: (value: boolean) => void;
 
-	$: bool_value =
-		typeof value === "string" ? value.toLowerCase() === "true" : !!value;
-
-	let internal_value = bool_value;
-	$: if (bool_value !== internal_value) {
-		internal_value = bool_value;
-	}
-
-	function handle_change(event: CustomEvent<boolean>): void {
-		internal_value = event.detail;
-		on_change(event.detail);
-	}
-
-	function handle_click(event: MouseEvent): void {
+	function toggle(): void {
 		if (editable) {
-			const new_value = !internal_value;
-			internal_value = new_value;
-			on_change(new_value);
+			on_change(!value);
 		}
 	}
 
 	function handle_keydown(event: KeyboardEvent): void {
 		if (event.key === "Enter" || event.key === " ") {
 			event.stopPropagation();
-			if (editable) {
-				const new_value = !internal_value;
-				internal_value = new_value;
-				on_change(new_value);
-			}
+			toggle();
 		}
 	}
 </script>
 
-<div
-	class="bool-cell"
-	on:click={handle_click}
-	on:keydown={handle_keydown}
-	role="button"
-	tabindex="-1"
->
-	<BaseCheckbox
-		bind:value={internal_value}
-		label=""
-		interactive={editable}
-		on:change={handle_change}
-	/>
+<div class="bool-cell" on:keydown={handle_keydown} role="button" tabindex="-1">
+	<BaseCheckbox {value} label="" interactive={editable} on:click={toggle} />
 </div>
 
 <style>

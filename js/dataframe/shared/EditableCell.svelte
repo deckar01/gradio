@@ -120,7 +120,7 @@
 
 {#if datatype === "bool"}
 	<BooleanCell
-		value={String(display_content)}
+		value={String(display_content).toLowerCase() === "true"}
 		{editable}
 		on_change={handle_bool_change}
 	/>
