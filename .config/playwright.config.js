@@ -28,7 +28,7 @@ const normal = defineConfig(base, {
 		{
 			name: "firefox",
 			use: { ...devices["Desktop Firefox"] },
-			testMatch: /.stream_(audio|video)_out\.spec\.ts/
+			grep: /@firefox/
 		},
 		{
 			name: "chrome",
@@ -36,7 +36,7 @@ const normal = defineConfig(base, {
 				...devices["Desktop Chrome"],
 				permissions: ["clipboard-read", "clipboard-write", "microphone"]
 			},
-			testIgnore: /.stream_(audio|video)_out\.spec\.ts/
+			grepInvert: /@firefox/
 		}
 	]
 });
