@@ -36,7 +36,6 @@
 	elem_id={gradio.shared.elem_id}
 	elem_classes={gradio.shared.elem_classes}
 	container={gradio.shared.container}
-	padding={gradio.props.padding !== false}
 	overflow_behavior="visible"
 >
 	{#if gradio.shared.show_label && gradio.props.buttons && gradio.props.buttons.length > 0}
@@ -65,6 +64,7 @@
 	/>
 	<div
 		class="html-container"
+		class:padding={gradio.props.padding}
 		class:pending={gradio.shared.loading_status?.status === "pending" &&
 			gradio.shared.loading_status?.show_progress !== "hidden"}
 		style:min-height={gradio.props.min_height &&
@@ -104,7 +104,7 @@
 </Block>
 
 <style>
-	.html-container {
+	.padding {
 		padding: var(--block-padding);
 	}
 

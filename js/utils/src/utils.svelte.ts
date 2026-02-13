@@ -34,7 +34,6 @@ export interface SharedProps {
 	client: Client;
 	scale: number;
 	min_width: number;
-	padding: number;
 	load_component: (
 		arg0: string,
 		arg1: "base" | "example" | "component"
@@ -301,7 +300,6 @@ export const allowed_shared_props: (keyof SharedProps)[] = [
 	"scale",
 	"min_width",
 	"theme",
-	"padding",
 	"loading_status",
 	"label",
 	"show_label",

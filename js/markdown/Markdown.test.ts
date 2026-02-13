@@ -49,4 +49,16 @@ describe("Markdown", () => {
 		) as HTMLAnchorElement;
 		assert.equal(link.href, "https://");
 	});
+
+	test("shows padding", async () => {
+		const { container } = await render(Markdown, {padding: true});
+
+		assert.isNotNull(container.querySelector(".padding"));
+	});
+
+	test("hides padding", async () => {
+		const { container } = await render(Markdown, {padding: false});
+
+		assert.isNull(container.querySelector(".padding"));
+	});
 });
